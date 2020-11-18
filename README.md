@@ -7,7 +7,7 @@
 - [Usage](#usage)
 - [Authors](#authors)
 
-## 🧐 About <a name = "about"></a>
+## About <a name = "about"></a>
 
 This bot will help you create multiple random accounts on Nike. It will also add a phone number and verify it. For phone verification you have to use "onlinesim.ru" api.
 
@@ -27,7 +27,7 @@ This bot will help you create multiple random accounts on Nike. It will also add
 - Run the bot with "node bot --accounts=5"
 - To run with proxy support "node bot --accounts=5 --proxy"
 
-## ✍️ Authors <a name = "authors"></a>
+## Authors <a name = "authors"></a>
 
 Developed By [Iqbal Shehzada](https://histudio.co)
 
