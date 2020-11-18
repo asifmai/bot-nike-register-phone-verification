@@ -94,7 +94,7 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
         await genderOptions[i].click('input');
       }
     }
-    await page.waitFor(3000);
+    await page.waitForTimeout(3000);
     genderOptions = await page.$$('ul[data-componentname="gender"] > li');
     for (let i = 0; i < genderOptions.length; i++) {
       const gender = await genderOptions[i].$eval('span', elm => elm.innerText.trim().toLowerCase());
@@ -103,11 +103,11 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
       }
     }
     await page.click('label.checkbox');
-    await page.waitFor(3000);
+    await page.waitForTimeout(3000);
 
     // Submit the form
     await page.click('input[value="JOIN US"]');
-    await page.waitFor(10000);
+    await page.waitForTimeout(10000);
 
     // Check if form Submitted
     const gotLogin = await page.$('button.join-log-in');
@@ -126,6 +126,7 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
       let smsCode;
       let numberInfo;
       do {
+        await page.evaluate(() => document.querySelector('input.phoneNumber').value="");
         numberInfo = await getNumber();
         await page.select('select.country', numberInfo.country);
         await page.type('input.phoneNumber', numberInfo.number.replace(/\+7/gi, ''), {delay: 50});
@@ -137,9 +138,9 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
       await page.waitForSelector('input[placeholder="Enter Code"]');
       await page.type('input[placeholder="Enter Code"]', smsCode, {delay: 50});
       await page.click('label.checkbox');
-      await page.waitFor(1000);
+      await page.waitForTimeout(1000);
       await page.click('input[value="CONTINUE"]');
-      await page.waitFor(3000);
+      await page.waitForTimeout(3000);
 
       await browser.close();
       console.log(`Account Creation Successfull...`);
