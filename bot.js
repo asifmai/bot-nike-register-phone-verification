@@ -83,10 +83,9 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
     await page.type('input[name="lastName"]', account.lastName, {delay: 50});
     await page.focus('input[name="dateOfBirth"]');
     await page.keyboard.type(account.year, {delay: 50});
+    await page.keyboard.press('ArrowRight');
     await page.keyboard.type(account.month, {delay: 50});
     await page.keyboard.type(account.day, {delay: 50});
-    // await page.keyboard.press('ArrowRight');
-    // await page.keyboard.press('ArrowRight');
     await page.select('select[name="country"]', account.country);
     let genderOptions = await page.$$('ul[data-componentname="gender"] > li');
     for (let i = 0; i < genderOptions.length; i++) {
