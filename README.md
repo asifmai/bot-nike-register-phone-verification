@@ -29,8 +29,7 @@ This bot will help you create multiple random accounts on Nike. It will also add
 
 ## ✍️ Authors <a name = "authors"></a>
 
-Developed By
+Developed By [Iqbal Shehzada](https://histudio.co)
 
 - [@asifmai](https://github.com/asifmai)
-- [@skype](skype:asifmai?chat)
 - [asifmai@hotmail.com](mailto:asifmai@hotmail.com)
