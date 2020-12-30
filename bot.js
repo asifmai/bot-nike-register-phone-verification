@@ -82,10 +82,9 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
     await page.type('input[name="firstName"]', account.firstName, {delay: 50});
     await page.type('input[name="lastName"]', account.lastName, {delay: 50});
     await page.focus('input[name="dateOfBirth"]');
-    await page.keyboard.type(account.year, {delay: 50});
-    await page.keyboard.press('ArrowRight');
     await page.keyboard.type(account.month, {delay: 50});
     await page.keyboard.type(account.day, {delay: 50});
+    await page.keyboard.type(account.year, {delay: 50});
     await page.select('select[name="country"]', account.country);
     let genderOptions = await page.$$('ul[data-componentname="gender"] > li');
     for (let i = 0; i < genderOptions.length; i++) {
@@ -145,7 +144,7 @@ const createAccount = (account, proxyInfo = false) => new Promise(async (resolve
       await browser.close();
       console.log(`Account Creation Successfull...`);
       accountsCreated++;
-      fs.appendFileSync(fileName, `"${account.email}","${account.password}","${numberInfo.number}","${account.firstName}","${account.lastName}","${account.dob}","${account.gender}","${account.country}"\r\n`);
+      fs.appendFileSync(fileName, `"${account.email}","${account.password}","${numberInfo.number}","${account.firstName}","${account.lastName}","${account.month}/${account.day}/${account.year}","${account.gender}","${account.country}"\r\n`);
       resolve(true);
     }
   } catch (error) {
